@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body >
+    <div>
+        <div class="navbar navbar-inverse navbar-fixed-top" style="background-color: #0530FB;margin:auto">
+            <div class="container">
+
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+
+                    </button>
+                    @Html.ActionLink("Twitter", "Index", "Home", new { area = "" }, new { @class = "navbar-brand", style = "color:white" })
+                </div>
+                <div class="navbar-collapse collapse" style="margin-left:450px;">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+
+                        @if (Request.IsAuthenticated)
+                        {
+                            <li style="color:white">@Html.ActionLink("Posts", "Index", "posts")</li>
+                            <li style="color:white">@Html.ActionLink("My Posts", "Index", "newposts")</li>
+                            
+                                <li style="color:white; margin-top:15px">@Session["name"]</li>
+                                <li style="color:white">@Html.ActionLink("Log Out", "Logout", "Home")</li>
+                            
+                        }
+                        else
+                        {
+                            <li style="color:white">@Html.ActionLink("Register", "Register", "Home")</li>
+                            
+                            <li style="color:white">@Html.ActionLink("Log In", "Login", "Home")</li>
+                        }
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+
+        </div>
+        
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+</body>
+</html>

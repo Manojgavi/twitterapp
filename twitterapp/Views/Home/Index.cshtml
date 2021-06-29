@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<div style="margin-left:auto;margin-right:auto;border:solid 1px black;">
+    <h1 style="text-align:center">Welcome</h1>
+    @if (Request.IsAuthenticated)
+    {
+        <h2 style="text-align:center">@Session["name"]</h2>
+        <h3 style="text-align:center">Click here to see all posts</h3>
+        <h3 style="text-align:center">@Html.ActionLink("Posts", "Index", "posts")</h3>
+        <h3 style="text-align:center">Click here to see your posts</h3>
+        <h3 style="text-align:center">@Html.ActionLink("My Posts", "Index", "newposts")</h3>
+
+    }
+    else
+    {
+        <h2 style="text-align:center">Login or Register to see posts</h2>
+    }
+
+
+</div>
